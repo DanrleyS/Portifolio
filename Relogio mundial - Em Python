@@ -1,0 +1,732 @@
+from datetime import datetime
+from pytz import country_timezones
+import pytz
+
+print("================ horário mundial ============")
+
+_zona = int (input ("selecione a zona: "))
+_pais = int (input ("selecione o país: "))
+
+time_zones = pytz.all_timezones
+
+timezone_country = {}
+
+for countrycode in country_timezones:
+    timezones = country_timezones[countrycode]
+    for timezone in timezones:
+        timezone_country[timezone] = countrycode
+
+
+zonas = []
+for i in timezone_country.keys():
+    zonas.append(i)
+
+zona_selecionada = pytz.timezone(zonas[_zona])
+country_time = datetime.now(zona_selecionada)
+print(country_time)
+
+paises = {
+
+    "AD": "Andorra",
+
+    "AE": "United Arab Emirates",
+
+    "AF": "Afghanistan",
+
+    "AG": "Antigua and Barbuda",
+
+    "AI": "Anguilla",
+
+    "AL": "Albania",
+
+    "AM": "Armenia",
+
+    "AO": "Angola",
+
+    "AQ": "Antarctica",
+
+    "AR": "Argentina",
+
+    "AS": "American Samoa",
+
+    "AT": "Austria",
+
+    "AU": "Australia",
+
+    "AW": "Aruba",
+
+    "AX": "\u00c5land Islands",
+
+    "AZ": "Azerbaijan",
+
+    "BA": "Bosnia and Herzegovina",
+
+    "BB": "Barbados",
+
+    "BD": "Bangladesh",
+
+    "BE": "Belgium",
+
+    "BF": "Burkina Faso",
+
+    "BG": "Bulgaria",
+
+    "BH": "Bahrain",
+
+    "BI": "Burundi",
+
+    "BJ": "Benin",
+
+    "BL": "Saint Barthélemy",
+
+    "BM": "Bermuda",
+
+    "BN": "Brunei Darussalam",
+
+    "BO": "Bolivia, Plurinational State of",
+
+    "BQ": "Caribbean Netherlands",
+
+    "BR": "Brazil",
+
+    "BS": "Bahamas",
+
+    "BT": "Bhutan",
+
+    "BV": "Bouvet Island",
+
+    "BW": "Botswana",
+
+    "BY": "Belarus",
+
+    "BZ": "Belize",
+
+    "CA": "Canada",
+
+    "CC": "Cocos (Keeling) Islands",
+
+    "CD": "Congo, the Democratic Republic of the",
+
+    "CF": "Central African Republic",
+
+    "CG": "Republic of the Congo",
+
+    "CH": "Switzerland",
+
+    "CI": "C\u00f4te d'Ivoire",
+
+    "CK": "Cook Islands",
+
+    "CL": "Chile",
+
+    "CM": "Cameroon",
+
+    "CN": "China (People's Republic of China)",
+
+    "CO": "Colombia",
+
+    "CR": "Costa Rica",
+
+    "CU": "Cuba",
+
+    "CV": "Cape Verde",
+
+    "CW": "Cura\u00e7ao",
+
+    "CX": "Christmas Island",
+
+    "CY": "Cyprus",
+
+    "CZ": "Czech Republic",
+
+    "DE": "Germany",
+
+    "DJ": "Djibouti",
+
+    "DK": "Denmark",
+
+    "DM": "Dominica",
+
+    "DO": "Dominican Republic",
+
+    "DZ": "Algeria",
+
+    "EC": "Ecuador",
+
+    "EE": "Estonia",
+
+    "EG": "Egypt",
+
+    "EH": "Western Sahara",
+
+    "ER": "Eritrea",
+
+    "ES": "Spain",
+
+    "ET": "Ethiopia",
+
+    "EU": "Europe",
+
+    "FI": "Finland",
+
+    "FJ": "Fiji",
+
+    "FK": "Falkland Islands (Malvinas)",
+
+    "FM": "Micronesia, Federated States of",
+
+    "FO": "Faroe Islands",
+
+    "FR": "France",
+
+    "GA": "Gabon",
+
+    "GB-ENG": "England",
+
+    "GB-NIR": "Northern Ireland",
+
+    "GB-SCT": "Scotland",
+
+    "GB-WLS": "Wales",
+
+    "GB": "United Kingdom",
+
+    "GD": "Grenada",
+
+    "GE": "Georgia",
+
+    "GF": "French Guiana",
+
+    "GG": "Guernsey",
+
+    "GH": "Ghana",
+
+    "GI": "Gibraltar",
+
+    "GL": "Greenland",
+
+    "GM": "Gambia",
+
+    "GN": "Guinea",
+
+    "GP": "Guadeloupe",
+
+    "GQ": "Equatorial Guinea",
+
+    "GR": "Greece",
+
+    "GS": "South Georgia and the South Sandwich Islands",
+
+    "GT": "Guatemala",
+
+    "GU": "Guam",
+
+    "GW": "Guinea-Bissau",
+
+    "GY": "Guyana",
+
+    "HK": "Hong Kong",
+
+    "HM": "Heard Island and McDonald Islands",
+
+    "HN": "Honduras",
+
+    "HR": "Croatia",
+
+    "HT": "Haiti",
+
+    "HU": "Hungary",
+
+    "ID": "Indonesia",
+
+    "IE": "Ireland",
+
+    "IL": "Israel",
+
+    "IM": "Isle of Man",
+
+    "IN": "India",
+
+    "IO": "British Indian Ocean Territory",
+
+    "IQ": "Iraq",
+
+    "IR": "Iran, Islamic Republic of",
+
+    "IS": "Iceland",
+
+    "IT": "Italy",
+
+    "JE": "Jersey",
+
+    "JM": "Jamaica",
+
+    "JO": "Jordan",
+
+    "JP": "Japan",
+
+    "KE": "Kenya",
+
+    "KG": "Kyrgyzstan",
+
+    "KH": "Cambodia",
+
+    "KI": "Kiribati",
+
+    "KM": "Comoros",
+
+    "KN": "Saint Kitts and Nevis",
+
+    "KP": "Korea, Democratic People's Republic of",
+
+    "KR": "Korea, Republic of",
+
+    "KW": "Kuwait",
+
+    "KY": "Cayman Islands",
+
+    "KZ": "Kazakhstan",
+
+    "LA": "Laos (Lao People's Democratic Republic)",
+
+    "LB": "Lebanon",
+
+    "LC": "Saint Lucia",
+
+    "LI": "Liechtenstein",
+
+    "LK": "Sri Lanka",
+
+    "LR": "Liberia",
+
+    "LS": "Lesotho",
+
+    "LT": "Lithuania",
+
+    "LU": "Luxembourg",
+
+    "LV": "Latvia",
+
+    "LY": "Libya",
+
+    "MA": "Morocco",
+
+    "MC": "Monaco",
+
+    "MD": "Moldova, Republic of",
+
+    "ME": "Montenegro",
+
+    "MF": "Saint Martin",
+
+    "MG": "Madagascar",
+
+    "MH": "Marshall Islands",
+
+    "MK": "North Macedonia",
+
+    "ML": "Mali",
+
+    "MM": "Myanmar",
+
+    "MN": "Mongolia",
+
+    "MO": "Macao",
+
+    "MP": "Northern Mariana Islands",
+
+    "MQ": "Martinique",
+
+    "MR": "Mauritania",
+
+    "MS": "Montserrat",
+
+    "MT": "Malta",
+
+    "MU": "Mauritius",
+
+    "MV": "Maldives",
+
+    "MW": "Malawi",
+
+    "MX": "Mexico",
+
+    "MY": "Malaysia",
+
+    "MZ": "Mozambique",
+
+    "NA": "Namibia",
+
+    "NC": "New Caledonia",
+
+    "NE": "Niger",
+
+    "NF": "Norfolk Island",
+
+    "NG": "Nigeria",
+
+    "NI": "Nicaragua",
+
+    "NL": "Netherlands",
+
+    "NO": "Norway",
+
+    "NP": "Nepal",
+
+    "NR": "Nauru",
+
+    "NU": "Niue",
+
+    "NZ": "New Zealand",
+
+    "OM": "Oman",
+
+    "PA": "Panama",
+
+    "PE": "Peru",
+
+    "PF": "French Polynesia",
+
+    "PG": "Papua New Guinea",
+
+    "PH": "Philippines",
+
+    "PK": "Pakistan",
+
+    "PL": "Poland",
+
+    "PM": "Saint Pierre and Miquelon",
+
+    "PN": "Pitcairn",
+
+    "PR": "Puerto Rico",
+
+    "PS": "Palestine",
+
+    "PT": "Portugal",
+
+    "PW": "Palau",
+
+    "PY": "Paraguay",
+
+    "QA": "Qatar",
+
+    "RE": "Réunion",
+
+    "RO": "Romania",
+
+    "RS": "Serbia",
+
+    "RU": "Russian Federation",
+
+    "RW": "Rwanda",
+
+    "SA": "Saudi Arabia",
+
+    "SB": "Solomon Islands",
+
+    "SC": "Seychelles",
+
+    "SD": "Sudan",
+
+    "SE": "Sweden",
+
+    "SG": "Singapore",
+
+    "SH": "Saint Helena, Ascension and Tristan da Cunha",
+
+    "SI": "Slovenia",
+
+    "SJ": "Svalbard and Jan Mayen Islands",
+
+    "SK": "Slovakia",
+
+    "SL": "Sierra Leone",
+
+    "SM": "San Marino",
+
+    "SN": "Senegal",
+
+    "SO": "Somalia",
+
+    "SR": "Suriname",
+
+    "SS": "South Sudan",
+
+    "ST": "Sao Tome and Principe",
+
+    "SV": "El Salvador",
+
+    "SX": "Sint Maarten (Dutch part)",
+
+    "SY": "Syrian Arab Republic",
+
+    "SZ": "Swaziland",
+
+    "TC": "Turks and Caicos Islands",
+
+    "TD": "Chad",
+
+    "TF": "French Southern Territories",
+
+    "TG": "Togo",
+
+    "TH": "Thailand",
+
+    "TJ": "Tajikistan",
+
+    "TK": "Tokelau",
+
+    "TL": "Timor-Leste",
+
+    "TM": "Turkmenistan",
+
+    "TN": "Tunisia",
+
+    "TO": "Tonga",
+
+    "TR": "Turkey",
+
+    "TT": "Trinidad and Tobago",
+
+    "TV": "Tuvalu",
+
+    "TW": "Taiwan (Republic of China)",
+
+    "TZ": "Tanzania, United Republic of",
+
+    "UA": "Ukraine",
+
+    "UG": "Uganda",
+
+    "UM": "US Minor Outlying Islands",
+
+    "US": "United States",
+
+    "UY": "Uruguay",
+
+    "UZ": "Uzbekistan",
+
+    "VA": "Holy See (Vatican City State)",
+
+    "VC": "Saint Vincent and the Grenadines",
+
+    "VE": "Venezuela, Bolivarian Republic of",
+
+    "VG": "Virgin Islands, British",
+
+    "VI": "Virgin Islands, U.S.",
+
+    "VN": "Vietnam",
+
+    "VU": "Vanuatu",
+
+    "WF": "Wallis and Futuna Islands",
+
+    "WS": "Samoa",
+
+    "XK": "Kosovo",
+
+    "YE": "Yemen",
+
+    "YT": "Mayotte",
+
+    "ZA": "South Africa",
+
+    "ZM": "Zambia",
+
+    "ZW": "Zimbabwe"
+
+}
+
+simbol_do_pais = [timezone_country[zonas[_pais]]]
+
+for i in paises.keys():
+    simbol_do_pais.append(i.lower())
+
+imagem = "png250px/{}.{}".format(simbol_do_pais[0],'png')
+key = simbol_do_pais[0].upper()
+nome_do_pais = paises[key]
+print(nome_do_pais)
+
+print(f"A data de {zona_selecionada} é {country_time.strftime('%d-%m-%y')} e o pais é {nome_do_pais} e la são {country_time.strftime('%H:%M:%S')} Horas")
+
+
+"========================================================================="
+
+
+from tkinter.ttk import *
+from tkinter import*
+from tkinter import Tk, StringVar, ttk
+
+from tkinter.ttk import *
+from tkinter import*
+from tkinter import Tk, StringVar, ttk
+
+
+from datetime import datetime
+from pytz import country_timezones
+import pytz
+
+
+
+
+import pyglet
+pyglet.font.add_file('digital-7.ttf')
+
+co0 = "#2e2d2b"  # Preta
+co1 = "#feffff"  # branca
+co2 = "#34c6eb"  # Azul
+co3 = "#38576b"  # valor
+
+janela = Tk()
+janela.title('')
+janela.geometry('300x190')
+janela.configure(background=co3)
+janela.resizable(width=FALSE, height=FALSE)
+
+style = ttk.Style(janela)
+style.theme_use("clam")
+
+janela.mainloop()
+
+
+frameCima = Frame(janela, width=300, height=50, bg=co1, relief=FLAT)
+frameCima.grid(row=0, column=0, columnspan=2)
+frameDireita = Frame(janela, width=300, height=390, bg=co0, relief=FLAT)
+frameDireita.grid(row=1, column=0, pady=1,padx=0, sticky=NSEW)
+
+
+app_img = Image.open('./icon.png')
+app_img = app_img.resize((40,40))
+app_img = ImageTk.PhotoImage(app_img)
+app_logo = Label(frameCima, image=app_img, text=' Relógio mundial', width=920, compound=LEFT, relief=FLAT, anchor=NW, font=('digital-7 25'), bg=co1, fg=co0)
+app_logo.place(x=0, y=0)
+
+frameDireita_conteudo_0 = Frame(frameDireita, width=300, height=35, bg=co1, relief=RAISED)
+frameDireita_conteudo_0.grid(row=0, column=0, pady=0,padx=0, sticky=NSEW)
+frameDireita_conteudo_1 = Frame(frameDireita, width=300, height=155, bg=co1, relief=FLAT)
+frameDireita_conteudo_1.grid(row=1, column=0, pady=1,padx=0, sticky=NSEW)
+
+l_zona = Label(frameDireita_conteudo_0, text="Fuso Horario *", width=35, height=1,anchor=NW, font=('Ivy 10 '), bg=co1, fg=co0)
+l_zona.place(x=10, y=10)
+c_zona = Combobox(frameDireita_conteudo_0, width=25)
+
+c_zona.set('Asia/Kolkata')
+c_zona.place(x=123, y=10)
+
+# Trabalhando no frame conteudo 2 -----------------------------------
+
+l_cidade = Label(frameDireita_conteudo_1, text='New York', anchor=NW, font=('Arial 10 '), bg=co1, fg=co0)
+l_cidade.place(x=10, y=8)
+
+l_pais = Label(frameDireita_conteudo_1, text='USA', anchor=NW, font=('Arial 10 '), bg=co1, fg=co0)
+l_pais.place(x=10, y=28)
+
+l_horas = Label(frameDireita_conteudo_1, text="10:05:05", font=('digital-7  25 bold'), bg=co1, fg=co2)
+l_horas.place(x=10, y=45)
+
+l_periodo = Label(frameDireita_conteudo_1, text='PM', anchor=NW, font=('Verdana 10'), bg=co1, fg=co2)
+l_periodo.place(x=120, y=60)
+
+l_data = Label(frameDireita_conteudo_1,  font=('Arial  8'), bg=co1, fg=co0)
+l_data.place(x=10, y=79)
+
+'''# imagem bandeira
+
+img_bandeira = Image.open('./png250px/ao.png')
+img_bandeira = img_bandeira.resize((93, 55))
+img_bandeira = ImageTk.PhotoImage(img_bandeira)
+
+l_icon = Label(frameDireita_conteudo_1,image=img_bandeira, bg=cor1, relief='solid')
+l_icon.place(x=170, y=40)'''
+
+# codigo a parte para obter zonas de fuso horario -----------------
+
+# obtendo  Zonas com abreviacao do pais                          
+timezone_country = {}          
+for countrycode in country_timezones:
+    timezones = country_timezones[countrycode]
+    for timezone in timezones:
+        timezone_country[timezone] = countrycode
+
+
+# lista das zonas ( fuso horarios )
+zonas = []
+
+for i in timezone_country.keys():
+    zonas.append(i)
+
+# recebendo as zonas
+
+c_zona['values']= (zonas)
+
+# funcoes ---------------------------------------------------------
+
+# definindo algumas variaveis globais
+
+global l_icon, img_bandeira
+def relogio():
+
+    global l_icon, img_bandeira
+
+    zona = c_zona.get()
+
+    # convertendo a zona selecionada no formato de timezone  
+    zona_selecionada = pytz.timezone(zona)
+
+    # obtendo a hora da zona selecionada
+    country_time = datetime.now(zona_selecionada)
+
+    # variavel que tera o simbolo do pais
+    simbol_do_pais = [timezone_country[zona]]
+
+    for i in paises.keys():
+        simbol_do_pais.append(i.lower())
+
+    # usando format para obter o caminho da imagem ( bandeira do pais)
+    imagem = "./png250px/{}.{}".format(simbol_do_pais[0],'png').lower()
+
+    # obtendo o key do pais em letra maiusculas
+    key = simbol_do_pais[0].upper()
+
+    # obtendo o nome do pais
+    nome_do_pais = paises[key]
+
+   
+    tempo = country_time
+    horas = tempo.strftime("%H:%M:%S")
+    dia_da_semana = tempo.strftime("%A")
+    dia = tempo.day
+    mes = tempo.strftime("%B")
+    ano = tempo.strftime("%Y")
+    periodo = tempo.strftime("%p")
+
+  # passando os dados pelas labels
+    l_cidade.config(text=zona)
+    l_pais.config(text=nome_do_pais)
+    l_horas.config(text=horas)
+    l_data.config(text=dia_da_semana +", "+ "" + str(dia) + " " + str(mes) + " " + (ano) + " " + (periodo))
+    l_periodo.config(text=(periodo))
+
+ # imagem bandeira
+    img_bandeira = Image.open(imagem)
+    img_bandeira = img_bandeira.resize((105, 64))
+    img_bandeira = ImageTk.PhotoImage(img_bandeira)
+
+    l_icon = Label(frameDireita_conteudo_1,image=img_bandeira, bg=co0, relief='solid')
+    l_icon.place(x=185, y=25)
+
+
+    # reiniciando a funcao apos 1segundo
+    l_horas.after(200, relogio)
+
+
+relogio()
+
+janela.mainloop()
+
+
+
+
+
