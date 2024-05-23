@@ -1,0 +1,67 @@
+from tkinter import *
+import random
+from PIL import Image, ImageTk
+
+co0 = "#2e2d2b"  
+co1 = "#feffff" 
+co2 = "#34c6eb" 
+co3 = "#38576b" 
+
+
+root = Tk()
+root.title("Quer meu produto?")
+root.geometry("800x400")
+root.resizable(False, False)
+root.configure(bg="#F0F0F0")
+
+
+
+sim_button = Button(root, text="SIM", width=10, command=lambda: show_response("sim"))
+nao_button = Button(root, text="NÃO", width=10, command=lambda: show_response("nao"))
+
+sim_button.configure(bg='#32CD32', fg='#FFFFFF', font=('Helvetica', 12))
+nao_button.configure(bg='#FF6347', fg='#FFFFFF', font=('Helvetica', 12))
+
+label_question = Label(root, text="Gostarias do meu produto?", font=("Helvetica", 30), bg="#F0F0F0")
+label_response = Label(root, text="", font=("Helvetica", 30), bg="#F0F0F0")
+
+sim_button.place(x=100, y=75)
+nao_button.place(x=250, y=75)
+label_question.place(x=50, y=20)
+label_response.place(x=120, y=130)
+
+
+
+def move_button(event):
+    x = random.randint(50, 700)  
+    y = random.randint(50, 300) 
+ 
+    if (x < sim_button.winfo_x() - 50 or x > sim_button.winfo_x() + 50) or \
+       (y < sim_button.winfo_y() - 50 or y > sim_button.winfo_y() + 50):
+        nao_button.place(x=x, y=y)  
+
+
+
+def show_response(response):
+    if response == "sim":
+        label_response.config(text="Você disse SIM! :D ", foreground="#32CD32")
+        
+        frameCima = Frame(root, width=3000, height=500, bg=co1, relief=FLAT)
+        frameCima.grid(row=0, column=0, columnspan=2)
+        app_img = Image.open('./icon.png')
+        app_img = app_img.resize((100,100))
+        app_img = ImageTk.PhotoImage(app_img)
+        app_logo = Label(frameCima, image=app_img, text=' VOCÊ DISSE SIM!! :D', width=920, compound=LEFT, relief=FLAT, anchor=NW, font=('digital-7 25'), bg=co1, fg=co0)
+        app_logo.place(x=100, y=150)
+
+    elif response == "nao":
+        label_response.config(text="  ", foreground="#FF6347")
+
+nao_button.bind("<Motion>", move_button)
+
+
+
+root.mainloop()
+
+
+
